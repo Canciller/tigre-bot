@@ -1,5 +1,6 @@
 .root {
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5em;
   display: flex;
 
   &:last-child {
@@ -8,9 +9,12 @@
 }
 
 .message {
-  background:blue;
   color: white;
-  padding: 0.6rem;
+  border: 1px solid white;
+
+  border-radius: 0.3em;
+  padding: 0.6em;
+  font-size: 0.9em;
 }
 
 .right {

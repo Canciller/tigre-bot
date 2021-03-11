@@ -1,13 +1,17 @@
 .root {
-  background: red;
+  background: #1a1a1a;
+
   display: flex;
   align-items: center;
   font-size: 1rem;
 }
 
 .message {
+  background: transparent;
+  color: white;
+
   flex: 1;
-  padding: 1em;
+  padding: 1.5em;
   font-size: 0.9em;
   border: none;
 }
