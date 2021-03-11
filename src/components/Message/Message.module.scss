@@ -1,0 +1,22 @@
+.root {
+  margin-bottom: 0.5rem;
+  display: flex;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.message {
+  background:blue;
+  color: white;
+  padding: 0.6rem;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.left {
+  flex-direction: row;
+}
