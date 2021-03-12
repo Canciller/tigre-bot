@@ -1,10 +1,10 @@
 .root {
   font-size: 1rem;
-  margin-bottom: 0.5em;
+  margin-top: 0.5em;
   display: flex;
 
-  &:last-child {
-    margin-bottom: 0;
+  &:first-child {
+    margin-top: 0;
   }
 }
 
