@@ -25,7 +25,7 @@ class MessageService {
       const data = await res.json();
 
       return {
-        text: data.content,
+        text: data.answer,
         direction: 'LEFT',
       };
     } catch (err) {
