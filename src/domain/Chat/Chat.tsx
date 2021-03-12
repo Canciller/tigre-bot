@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext, useState } from 'react';
+import React, { FunctionComponent, useContext, useEffect, useState } from 'react';
 import styles from './Chat.module.scss';
 
 import TopBar from './TopBar';
@@ -9,6 +9,12 @@ import { MessagesContext } from '../../context/Messages';
 import MessageService from '../../services/MessageService';
 
 const Chat: FunctionComponent = () => {
+  const endRef = React.createRef<HTMLDivElement>();
+
+  const scrollToBottom = () => {
+    if (endRef) endRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const { messages, dispatch } = useContext(MessagesContext);
 
   const addMessage = (message: any) => {
@@ -17,10 +23,14 @@ const Chat: FunctionComponent = () => {
 
   const [waiting, setWaiting] = useState(false);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <div className={styles.root}>
       <TopBar />
-      <Messages messages={messages} waiting={waiting} />
+      <Messages endRef={endRef} messages={messages} waiting={waiting} />
       <WriteMessage
         onMessageWritten={(text: string) => {
           addMessage({
