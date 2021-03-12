@@ -16,7 +16,7 @@ const Messages: FunctionComponent<MessagesProps> = ({ messages = [], waiting = f
       <div className={styles.container}>
         <div className={styles.messages}>
           {messages.map((message) => (
-            <Message key={uuid()} text={message.text} direction={message.direction} />
+            <Message key={uuid()} text={message.text} direction={message.direction} level={message.level} />
           ))}
           {waiting && <Message text="..." direction="LEFT" />}
           <div ref={endRef} />

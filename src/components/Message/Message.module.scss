@@ -20,6 +20,12 @@
   flex-direction: row;
 }
 
+.error {
+  .message {
+    background-color: rgb(202, 52, 52);
+  }
+}
+
 .message {
   color: white;
   background: #232324;

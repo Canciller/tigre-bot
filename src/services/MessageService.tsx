@@ -3,13 +3,36 @@ function timeout(ms: any) {
 }
 
 class MessageService {
-  async send(text: string) {
-    await timeout(2000);
+  api: string;
 
-    return {
-      text: 'RESPONSE',
-      direction: 'LEFT',
-    };
+  constructor() {
+    this.api = 'https://tigre-bot-api.herokuapp.com/api/v1';
+  }
+
+  async send(content: string) {
+    try {
+      const res = await fetch(`${this.api}/question`, {
+        method: 'POST',
+        body: JSON.stringify({
+          content,
+        }),
+      });
+
+      console.log(res);
+
+      await timeout(2000);
+
+      return {
+        text: 'RESPONSE',
+        direction: 'LEFT',
+      };
+    } catch (err) {
+      return {
+        text: 'Ha ocurrido un problema, intentelo de nuevo mas tarde.',
+        level: 'ERROR',
+        direction: 'LEFT',
+      };
+    }
   }
 }
 

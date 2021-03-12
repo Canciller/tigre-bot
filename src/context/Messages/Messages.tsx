@@ -1,10 +1,12 @@
 import React, { FunctionComponent, ReactNode, useReducer } from 'react';
 
 export type DirectionType = 'LEFT' | 'RIGHT';
+export type MessageLevel = 'ERROR' | undefined;
 
 export type MessageType = {
   text: string;
   direction: DirectionType;
+  level?: MessageLevel;
 };
 
 export type MessagesType = Array<MessageType>;

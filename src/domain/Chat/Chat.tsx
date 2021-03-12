@@ -41,6 +41,13 @@ const Chat: FunctionComponent = () => {
           setWaiting(true);
           MessageService.send(text)
             .then((message) => addMessage(message))
+            .catch(() =>
+              addMessage({
+                text: 'Error con el servidor',
+                level: 'ERROR',
+                direction: 'LEFT',
+              }),
+            )
             .finally(() => setWaiting(false));
         }}
       />
