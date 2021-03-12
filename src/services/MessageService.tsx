@@ -1,4 +1,4 @@
-function timeout(ms: any) {
+function timeout(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -6,7 +6,7 @@ class MessageService {
   api: string;
 
   constructor() {
-    this.api = 'https://tigre-bot-api.herokuapp.com/api/v1';
+    this.api = '/api/v1';
   }
 
   async send(content: string) {
@@ -16,7 +16,13 @@ class MessageService {
         body: JSON.stringify({
           content,
         }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       });
+
+      if (res.status != 200) throw new Error();
 
       console.log(res);
 
