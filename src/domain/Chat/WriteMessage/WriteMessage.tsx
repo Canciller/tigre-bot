@@ -13,10 +13,11 @@ const WriteMessage: FunctionComponent<WriteMessageProps> = ({ onMessageWritten }
 
   return (
     <div className={styles.root}>
-      <input onChange={(e) => setText(e.target.value)} className={styles.message} type="text" />
+      <input value={text} onChange={(e) => setText(e.target.value)} className={styles.message} type="text" />
       <div
         onClick={(e) => {
           if (onMessageWritten && text !== '') onMessageWritten(text);
+          setText('');
           e.preventDefault();
         }}
         className={styles.send}
