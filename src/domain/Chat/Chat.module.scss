@@ -1,12 +1,14 @@
 .root {
-  background: #232324;
+  background-color: rgba(35, 35, 36, 0.8);
 
   font-size: 1rem;
   position: absolute;
   display: flex;
   flex-direction: column;
   width: 26em;
-  height: 30em;
-  bottom: 0;
-  right: 0;
+  height: 32em;
+  bottom: 1em;
+  right: 1em;
+  overflow: hidden;
+  border-radius: 1em;
 }
