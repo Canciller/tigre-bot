@@ -1,71 +1,23 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useContext } from 'react';
 import styles from './Chat.module.scss';
 
 import TopBar from './TopBar';
 import Messages from './Messages';
 import WriteMessage from './WriteMessage';
+import { MessagesContext } from '../../context/Messages';
 
 const Chat: FunctionComponent = () => {
+  const { messages, dispatch } = useContext(MessagesContext);
+
   return (
     <div className={styles.root}>
       <TopBar />
-      <Messages
-        messages={[
-          {
-            text:
-              'long long long long long long long long long long long long long long long long long long long long long',
-          },
-          {
-            text: 'aaaaaaaaaaaaaaaaaaaaa',
-          },
-          {
-            text: 'nice nice nice',
-            direction: 'LEFT',
-          },
-          {
-            text:
-              'long long long long long long long long long long long long long long long long long long long long long',
-            direction: 'LEFT',
-          },
-          {
-            text:
-              'long long long long long long long long long long long long long long long long long long long long long',
-          },
-          {
-            text: 'aaaaaaaaaaaaaaa aaaaaaaaa aaaa',
-          },
-          {
-            text: 'nice nice nice',
-          },
-          {
-            text:
-              'long long long long long long long long long long long long long long long long long long long long long',
-          },
-          {
-            text: 'aaaaaaaaaaaaaaaaaaaaa',
-          },
-          {
-            text: 'nice nice nice',
-            direction: 'LEFT',
-          },
-          {
-            text:
-              'long long long long long long long long long long long long long long long long long long long long long',
-            direction: 'LEFT',
-          },
-          {
-            text:
-              'long long long long long long long long long long long long long long long long long long long long long',
-          },
-          {
-            text: 'aaaaaaaaaaaaaaa aaaaaaaaa aaaa',
-          },
-          {
-            text: 'nice nice nice',
-          },
-        ]}
+      <Messages messages={messages} />
+      <WriteMessage
+        onMessageWritten={(text: string) => {
+          if (dispatch) dispatch({ type: 'ADD', message: { text, direction: 'RIGHT' } });
+        }}
       />
-      <WriteMessage />
     </div>
   );
 };

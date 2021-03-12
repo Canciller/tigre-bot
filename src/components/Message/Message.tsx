@@ -9,7 +9,7 @@ interface MessageProps {
 const Message: FunctionComponent<MessageProps> = ({ text = '', direction = 'RIGHT' }: MessageProps) => {
   return (
     <div className={`${styles.root} ${direction == 'RIGHT' ? styles.right : styles.left}`}>
-      <div className={`${styles.message}`}>{text}</div>
+      <p className={`${styles.message}`}>{text}</p>
     </div>
   );
 };
