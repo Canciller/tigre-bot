@@ -11,7 +11,7 @@ class MessageService {
 
   async send(content: string) {
     try {
-      const res = await fetch(`${this.api}/question`, {
+      const res = await fetch(`${this.api}/question/`, {
         method: 'POST',
         body: JSON.stringify({
           content,
@@ -22,14 +22,10 @@ class MessageService {
         },
       });
 
-      if (res.status != 200) throw new Error();
-
-      console.log(res);
-
-      await timeout(2000);
+      const data = await res.json();
 
       return {
-        text: 'RESPONSE',
+        text: data.content,
         direction: 'LEFT',
       };
     } catch (err) {
