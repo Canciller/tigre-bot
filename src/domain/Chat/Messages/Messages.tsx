@@ -5,10 +5,11 @@ import { v4 as uuid } from 'uuid';
 import Message from '../../../components/Message';
 
 interface MessagesProps {
-  messages?: Array<Record<string, any>>;
+  messages: Array<Record<string, any>>;
+  waiting: boolean;
 }
 
-const Messages: FunctionComponent<MessagesProps> = ({ messages = [] }: MessagesProps) => {
+const Messages: FunctionComponent<MessagesProps> = ({ messages = [], waiting = false }: MessagesProps) => {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
@@ -16,6 +17,7 @@ const Messages: FunctionComponent<MessagesProps> = ({ messages = [] }: MessagesP
           {messages.map((message) => (
             <Message key={uuid()} text={message.text} direction={message.direction} />
           ))}
+          {waiting && <Message text="..." direction="LEFT" />}
         </div>
       </div>
     </div>
