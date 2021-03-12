@@ -11,13 +11,25 @@ interface WriteMessageProps {
 const WriteMessage: FunctionComponent<WriteMessageProps> = ({ onMessageWritten }: WriteMessageProps) => {
   const [text, setText] = useState('');
 
+  const writeMessage = () => {
+    if (onMessageWritten && text !== '') onMessageWritten(text);
+    setText('');
+  };
+
   return (
     <div className={styles.root}>
-      <input value={text} onChange={(e) => setText(e.target.value)} className={styles.message} type="text" />
+      <input
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') writeMessage();
+        }}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className={styles.message}
+        type="text"
+      />
       <div
         onClick={(e) => {
-          if (onMessageWritten && text !== '') onMessageWritten(text);
-          setText('');
+          writeMessage();
           e.preventDefault();
         }}
         className={styles.send}
